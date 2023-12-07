@@ -4,7 +4,7 @@ import { checkApiKey } from '../utils/checkKeys';
 import PropTypes from 'prop-types';
 
 const Setting = ({ modalOpen, setModalOpen }) => {
-  const apiKey = window.localStorage.getItem('api-key') || '';
+  const apiKey = window.localStorage.getItem('api-key') || process.env.NEXT_PUBLIC_OPENAI_API_KEY;
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [input, setInput] = useState('');
@@ -35,11 +35,12 @@ const Setting = ({ modalOpen, setModalOpen }) => {
   };
 
   useEffect(() => {
-    if (modalOpen) {
-      setInput(apiKey);
+    const apiKey = window.localStorage.getItem('api-key') || process.env.NEXT_PUBLIC_OPENAI_API_KEY;
+    if (!apiKey) {
+      setModalOpen(true);
     }
-  }, [apiKey, modalOpen]);
-
+  }, []);
+  
   return (
     <form
       onSubmit={saveKey}
