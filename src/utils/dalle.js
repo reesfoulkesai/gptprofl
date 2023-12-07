@@ -2,7 +2,7 @@ import { Configuration, OpenAIApi } from 'openai';
 
 export const dalle = async (prompt, key) => {
   const configuration = new Configuration({
-    apiKey: key,
+    apiKey: process.env.OPENAI_API_KEY,
   });
 
   const openai = new OpenAIApi(configuration);
