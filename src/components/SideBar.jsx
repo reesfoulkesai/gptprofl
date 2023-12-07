@@ -71,27 +71,20 @@ const SideBar = () => {
         </li>
         <li>
           <a
-            href='https://www.buymeacoffee.com/eyuel'
+            href='https://www.linkedin.com/in/reesfoulkes/'
             rel='noreferrer'
             target='_blank'>
             <MdOutlineCoffee size={15} />
-            <p className={`${!open && 'hidden'}`}>Support this project</p>
+            <p className={`${!open && 'hidden'}`}>Ask for Support</p>
           </a>
         </li>
         <li>
-          <a
-            rel='noreferrer'
-            target='_blank'
-            href='https://github.com/EyuCoder/chatgpt-clone'>
-            <AiOutlineGithub size={15} />
-            <p className={`${!open && 'hidden'}`}>Github</p>
-          </a>
-        </li>
-        <li>
+        {open && (
           <a onClick={() => setModalOpen(true)}>
             <MdOutlineVpnKey size={15} />
             <p className={`${!open && 'hidden'}`}>OpenAI Key</p>
           </a>
+           )}
         </li>
       </ul>
       <Modal title='Setting' modalOpen={modalOpen} setModalOpen={setModalOpen}>
