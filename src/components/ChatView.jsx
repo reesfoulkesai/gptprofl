@@ -77,8 +77,7 @@ const ChatView = () => {
   const sendMessage = async (e) => {
     e.preventDefault();
 
-    const key = window.localStorage.getItem('api-key');
-    if (!key) {
+    const key = process.env.NEXT_PUBLIC_OPENAI_API_KEY;    if (!key) {
       setModalOpen(true);
       return;
     }
